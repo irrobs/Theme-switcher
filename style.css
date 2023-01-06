@@ -1,0 +1,89 @@
+:root {
+	--dark: #292C35;
+	--light: #F1F1F1;
+	--label: #111;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#switch-container{
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--light);
+    transition: 0.5s;
+}
+
+#switch-container.dark{
+    background-color: var(--dark);
+    transition: 0.5s;
+}
+
+.switch{
+    background-color: var(--label);
+
+    width: fit-content;
+    height: fit-content;
+    padding: 1vw;
+    border-radius: 100px;
+
+    display: flex;
+    gap: 3vw;
+}
+
+.moon, .sun{
+    width: 5vw;
+}
+
+#switch-animation{
+    position: absolute;
+
+    background-color: var(--light);
+
+    width: 5vw;
+    height: 5vw;
+    border-radius: 100px;
+
+    cursor: pointer;
+
+    animation-name: switchAnimationReturn;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    
+}
+
+#switch-animation.dark{
+    animation-name: switchAnimation;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+@keyframes switchAnimation{
+    0%{
+        left: 43.5vw;
+    }
+
+    100%{
+        left: 51.5vw;
+    }
+}
+
+@keyframes switchAnimationReturn {
+    0%{
+        left: 51.5vw;
+    }
+
+    100%{
+        left: 43.5vw;
+    }
+}
