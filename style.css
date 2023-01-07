@@ -4,10 +4,28 @@
 	--label: #111;
 }
 
+#switch-container.light, h1.light{
+    --textThemeColor:var(--dark);
+    --themeColor:var(--light);
+}
+
+#switch-container.dark, h1.dark{
+    --textThemeColor:var(--light);
+    --themeColor:var(--dark);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+h1{
+    width: 15vw;
+    font-size: 2.5vw;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: var(--textThemeColor);
 }
 
 #switch-container{
@@ -17,14 +35,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 8vh;
 
-    background-color: var(--light);
-    transition: 0.5s;
-}
-
-#switch-container.dark{
-    background-color: var(--dark);
-    transition: 0.5s;
+    background-color: var(--themeColor);
 }
 
 .switch{
@@ -37,6 +51,7 @@
 
     display: flex;
     gap: 3vw;
+    
 }
 
 .moon, .sun{
@@ -55,7 +70,6 @@
     cursor: pointer;
 
     animation-name: switchAnimationReturn;
-    animation-duration: 0.5s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
     
@@ -63,9 +77,13 @@
 
 #switch-animation.dark{
     animation-name: switchAnimation;
-    animation-duration: 0.5s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
+}
+
+#switch-container, #switch-container.dark, #switch-animation, #switch-animation.dark {
+    transition: 0.3s;
+    animation-duration: 0.3s;
 }
 
 @keyframes switchAnimation{
@@ -85,5 +103,45 @@
 
     100%{
         left: 43.5vw;
+    }
+}
+
+@media (max-width: 800px) {
+    h1{
+        font-size: 5vw;
+    }
+
+    .switch{
+        gap: 6vw;
+        padding: 2vw;
+    }
+
+    .moon, .sun{
+        width: 10vw;
+    }
+
+    #switch-animation{
+        height: 10vw;
+        width: 10vw;
+    }
+
+    @keyframes switchAnimation{
+        0%{
+            left: 37vw;
+        }
+    
+        100%{
+            left: 53vw;
+        }
+    }
+    
+    @keyframes switchAnimationReturn {
+        0%{
+            left: 53vw;
+        }
+    
+        100%{
+            left: 37vw;
+        }
     }
 }
